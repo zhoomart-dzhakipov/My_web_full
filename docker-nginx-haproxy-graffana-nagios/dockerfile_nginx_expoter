@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Копирование конфигурационного файла Nginx
-COPY /home/ec2-user/My_web_full/docker-nginx-haproxy-graffana-nagios/nginx /etc/nginx/nginx.conf
+COPY /home/ec2-user/My_web_full/docker-nginx-haproxy-graffana-nagios/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Настройка запуска Nginx и экспорта метрик
  CMD ["sh", "-c", "nginx -g 'daemon off;' & nginx-prometheus-exporter -nginx.scrape-uri http://localhost/nginx_status"]
