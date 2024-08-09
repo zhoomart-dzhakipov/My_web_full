@@ -1,0 +1,5 @@
+FROM jasonrivers/nagios:latest
+
+# Установка зависимостей и MCMTP - почтового клиента для nagios
+RUN apt-get update && apt-get install -y msmtp 
+

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Скрипт для проверки состояния HTTP сервера
+
+# Конфигурация
+URL="${1:-http://localhost}"      # URL для проверки, может быть передан как аргумент
+EXPECTED_HTTP_CODE="${2:-200}"    # Ожидаемый HTTP статус код, может быть передан как аргумент
+
+# Проверка наличия необходимых аргументов
+if [ -z "$URL" ]; then
+    echo "CRITICAL - No URL provided"
+    exit 2
+fi
+
+# Функция для проверки статуса HTTP
+check_http() {
+    local url="$1"
+    local expected_code="$2"
+
+    # Выполняем запрос и получаем код состояния HTTP
+    http_response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+
+    # Логирование ответа для отладки
+    echo "DEBUG - HTTP response code: $http_response"
+
+    if [ "$http_response" -eq "$expected_code" ]; then
+        echo "HTTP OK - $url returned status $http_response"
+        exit 0
+    else
+        echo "HTTP CRITICAL - $url returned status $http_response (expected $expected_code)"
+        exit 2
+    fi
+}
+
+# Запускаем проверку
+check_http "$URL" "$EXPECTED_HTTP_CODE"
+

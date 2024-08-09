@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'haproxy'
+    static_configs:
+      - targets: ['haproxy_exporter:9101']
+
+  - job_name: 'nginx1'
+    static_configs:
+      - targets: ['nginx1:9113']
+
+  - job_name: 'nginx2'
+    static_configs:
+      - targets: ['nginx2:9113']
+
+  - job_name: 'nginx3'
+    static_configs:
+      - targets: ['nginx3:9113']
+
+  - job_name: 'nginx4'
+    static_configs:
+      - targets: ['nginx4:9113']
+

@@ -1,0 +1,15 @@
+services:
+  nagios:
+    image: nagios_msmtp
+    ports:
+      - "8085:80"
+    networks:
+      - webnet
+    volumes:
+      - ./nagios-config/:/opt/nagios/etc
+      - ./nagios-logs/:/opt/nagios/var
+
+networks:
+  webnet:
+    external: true
+

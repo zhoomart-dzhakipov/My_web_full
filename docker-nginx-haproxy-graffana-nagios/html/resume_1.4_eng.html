@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Ivan Ivanov</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #1f1f1f;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .section {
+            min-width: 100vw;
+            height: 100vh;
+            padding: 60px 20px;
+            box-sizing: border-box;
+        }
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px;
+            }
+            .section h2 {
+                font-size: 28px;
+            }
+            .section p {
+                font-size: 16px;
+            }
+            .section {
+                padding: 40px 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 18px;
+            }
+            .section h2 {
+                font-size: 24px;
+            }
+            .section p {
+                font-size: 14px;
+            }
+            .section {
+                padding: 30px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ivan Ivanov</h1>
+    </header>
+    <div class="container" id="container">
+        <section class="section" id="skills">
+            <h2>Skills</h2>
+            <p>Proficiency in CI/CD automation tools (Jenkins, GitLab CI, Ansible).</p>
+            <p>Experience with containerization and orchestration (Docker, Kubernetes).</p>
+            <p>Setup and management of cloud services (AWS, GCP, Azure).</p>
+            <p>Monitoring and logging (Prometheus, Grafana, ELK stack).</p>
+            <p>Configuration management (Terraform, Chef, Puppet).</p>
+        </section>
+        <section class="section" id="experience">
+            <h2>Work Experience</h2>
+            <p><strong>DevOps Engineer at ABC Company</strong> (2018 - Present)</p>
+            <p>Developed and maintained CI/CD pipelines for various projects.</p>
+            <p>Implemented monitoring and logging systems to ensure high service availability.</p>
+            <p>Automated application deployments using Docker and Kubernetes.</p>
+            <p><strong>System Administrator at XYZ Corp</strong> (2015 - 2018)</p>
+            <p>Managed servers and network devices.</p>
+            <p>Configured and maintained corporate IT infrastructure.</p>
+            <p>Automated routine tasks using Bash and Python scripts.</p>
+        </section>
+        <section class="section" id="about">
+            <h2>About Me</h2>
+            <p>I am a DevOps engineer with over 5 years of experience in the IT field.</p>
+            <p>I enjoy automating processes and improving system performance.</p>
+            <p>Actively engaged in self-development and learning new technologies.</p>
+            <p>In my free time, I enjoy programming, reading technical literature, and outdoor activities.</p>
+        </section>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const sections = document.querySelectorAll('.section');
+        const container = document.getElementById('container');
+
+        function showSection(index) {
+            container.style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                currentIndex = (currentIndex + 1) % sections.length;
+                showSection(currentIndex);
+            } else if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + sections.length) % sections.length;
+                if (currentIndex < 0) {
+                    currentIndex = sections.length - 1;
+                }
+                showSection(currentIndex);
+            }
+        });
+    </script>
+</body>
+</html>
+

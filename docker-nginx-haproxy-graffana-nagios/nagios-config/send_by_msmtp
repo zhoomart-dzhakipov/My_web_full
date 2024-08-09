@@ -1,0 +1,3 @@
+read text
+read email
+echo "$text" | msmtp --file=/opt/nagios/etc/msmtprc $email
