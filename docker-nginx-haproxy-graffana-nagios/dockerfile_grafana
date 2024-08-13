@@ -1,2 +1,2 @@
 FROM grafana/grafana:latest
-COPY /home/ec2-user/My_web_full/docker-nginx-haproxy-graffana-nagios/grafana.db /var/lib/grafana/grafana.db
+COPY ./My_web_full/docker-nginx-haproxy-graffana-nagios/grafana.db /var/lib/grafana/grafana.db
