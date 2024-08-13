@@ -88,7 +88,7 @@ services:
 
   nagios:
     image: nagios_msmtp
-    container_name: nagios_1
+    container_name: nagios1
     ports:
       - "8085:80"
     networks:
